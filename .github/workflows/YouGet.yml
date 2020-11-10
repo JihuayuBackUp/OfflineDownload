@@ -34,4 +34,5 @@ jobs:
           you-get '${{ github.event.inputs.url }}' -O ${{ github.event.inputs.name }}
       - name: Upload
         run: |
-          ./uploader -s ./${{ github.event.inputs.name }} -t 10 -r offline
+          file = "$(find / -name '${{ github.event.inputs.name }}*')"
+          ./uploader -s $file -t 10 -r offline
