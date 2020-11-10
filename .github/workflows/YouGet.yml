@@ -38,7 +38,7 @@ jobs:
       - name: Dwonload File
         run: |
           mkdir '${{ github.event.inputs.name }}'
-          you-get '${{ github.event.inputs.url }}' -o './${{ github.event.inputs.name }}'
+          ~\scoop\apps\python\3.9.0\Scripts\you-get '${{ github.event.inputs.url }}' -o './${{ github.event.inputs.name }}'
       - name: Upload
         run: |
           ~/scoop/uploader -s './${{ github.event.inputs.name }}' -t 10 -r offline -b 60
