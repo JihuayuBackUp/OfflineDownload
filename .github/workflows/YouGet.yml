@@ -35,4 +35,4 @@ jobs:
           you-get '${{ github.event.inputs.url }}' -o './${{ github.event.inputs.name }}'
       - name: Upload
         run: |
-          ./uploader -s './${{ github.event.inputs.name }}' -t 10 -r offline -b 60
+          ./uploader -s './${{ github.event.inputs.name }}' -t 10 -r Share/Offline -b 60
