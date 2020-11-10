@@ -28,7 +28,7 @@ jobs:
         shell: powershell
       - name: Install Uploader
         run: |
-          wget https://raw.githubusercontent.com/MoeClub/OneList/master/OneDriveUploader/amd64/win/OneDriveUploader.exe -O uploader.exe
+          wget https://raw.githubusercontent.com/MoeClub/OneList/master/OneDriveUploader/amd64/win/OneDriveUploader.exe -O ~/scoop/uploader.exe
         shell: powershell
       - name: Save Token
         run: 'echo "$TOKEN" > auth.json'
@@ -41,4 +41,4 @@ jobs:
           you-get '${{ github.event.inputs.url }}' -o './${{ github.event.inputs.name }}'
       - name: Upload
         run: |
-          ./uploader -s './${{ github.event.inputs.name }}' -t 10 -r offline -b 60
+          ~/scoop/uploader -s './${{ github.event.inputs.name }}' -t 10 -r offline -b 60
