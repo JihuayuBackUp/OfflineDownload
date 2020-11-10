@@ -27,4 +27,4 @@ jobs:
            wget ${{ github.event.inputs.url }} -q -O file
       - name: Upload
         run: |
-          ./uploader -s ./file -n ${{ github.event.inputs.name }} -t 10 -b 20
+          ./uploader -s ./file -n ${{ github.event.inputs.name }} -t 10
