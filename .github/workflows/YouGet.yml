@@ -18,18 +18,18 @@ jobs:
           path: |
             ~/scoop
           key: you-get-scoop-v2.0
-      - name: Install You-get
-        run: |
-          iwr -useb get.scoop.sh | iex
-          scoop install python
-          pip3 install you-get
-          scoop install ffmpeg
-          scoop install wget
-        shell: powershell
-      - name: Install Uploader
-        run: |
-          wget https://raw.githubusercontent.com/MoeClub/OneList/master/OneDriveUploader/amd64/win/OneDriveUploader.exe -O ~/scoop/uploader.exe
-        shell: powershell
+#       - name: Install You-get
+#         run: |
+#           iwr -useb get.scoop.sh | iex
+#           scoop install python
+#           pip3 install you-get
+#           scoop install ffmpeg
+#           scoop install wget
+#         shell: powershell
+#       - name: Install Uploader
+#         run: |
+#           wget https://raw.githubusercontent.com/MoeClub/OneList/master/OneDriveUploader/amd64/win/OneDriveUploader.exe -O ~/scoop/uploader.exe
+#         shell: powershell
       - name: Save Token
         run: 'echo "$TOKEN" > auth.json'
         shell: bash
