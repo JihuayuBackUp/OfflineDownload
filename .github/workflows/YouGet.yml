@@ -27,7 +27,7 @@ jobs:
           TOKEN: ${{secrets.TOKEN}}
       - name: Dwonload File
         run: |
-          you-get '${{ github.event.inputs.url }}'
+          you-get '${{ github.event.inputs.url }}' -O ${{ github.event.inputs.name }}
       - name: Upload
         run: |
           ./uploader -s ./file -n ${{ github.event.inputs.name }} -t 10 -r offline
