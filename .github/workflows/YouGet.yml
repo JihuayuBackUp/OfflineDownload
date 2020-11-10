@@ -21,7 +21,7 @@ jobs:
       - name: Install You-get
         run: |
           iwr -useb get.scoop.sh | iex
-          scoop install python3
+          scoop install python
           pip3 install you-get
           scoop install ffmpeg
           scoop install wget
