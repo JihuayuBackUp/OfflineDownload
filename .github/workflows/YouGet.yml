@@ -17,7 +17,7 @@ jobs:
         with:
           path: |
             ~/scoop
-          key: you-get-scoop-v1.0
+          key: you-get-scoop-v2.0
       - name: Install You-get
         run: |
           iwr -useb get.scoop.sh | iex
