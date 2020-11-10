@@ -12,24 +12,18 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/scoop
-          key: you-get-scoop-v2.0
-#       - name: Install You-get
-#         run: |
-#           iwr -useb get.scoop.sh | iex
-#           scoop install python
-#           pip3 install you-get
-#           scoop install ffmpeg
-#           scoop install wget
-#         shell: powershell
-#       - name: Install Uploader
-#         run: |
-#           wget https://raw.githubusercontent.com/MoeClub/OneList/master/OneDriveUploader/amd64/win/OneDriveUploader.exe -O ~/scoop/uploader.exe
-#         shell: powershell
+      - name: Install You-get
+        run: |
+          iwr -useb get.scoop.sh | iex
+          scoop install python3
+          pip3 install you-get
+          scoop install ffmpeg
+          scoop install wget
+        shell: powershell
+      - name: Install Uploader
+        run: |
+          wget https://raw.githubusercontent.com/MoeClub/OneList/master/OneDriveUploader/amd64/win/OneDriveUploader.exe -O uploader.exe
+        shell: powershell
       - name: Save Token
         run: 'echo "$TOKEN" > auth.json'
         shell: bash
@@ -38,7 +32,7 @@ jobs:
       - name: Dwonload File
         run: |
           mkdir '${{ github.event.inputs.name }}'
-          ~\scoop\apps\python\3.9.0\Scripts\you-get '${{ github.event.inputs.url }}' -o './${{ github.event.inputs.name }}'
+          you-get '${{ github.event.inputs.url }}' -o './${{ github.event.inputs.name }}'
       - name: Upload
         run: |
-          ~/scoop/uploader -s './${{ github.event.inputs.name }}' -t 10 -r offline -b 60
+          ./uploader -s './${{ github.event.inputs.name }}' -t 10 -r offline -b 60
