@@ -18,8 +18,8 @@ jobs:
           chmod 777 ./uploader
       - name: Install You-get
         run: |
-          pip3 install you-get
-          apt-get install ffmpeg
+          sudo pip3 install you-get
+          sudo apt-get install ffmpeg
       - name: Save Token
         run: 'echo "$TOKEN" > auth.json'
         shell: bash
