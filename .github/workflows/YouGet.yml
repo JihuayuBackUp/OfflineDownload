@@ -27,8 +27,8 @@ jobs:
           TOKEN: ${{secrets.TOKEN}}
       - name: Dwonload File
         run: |
-          mkdir dl
-          you-get '${{ github.event.inputs.url }}' -o ./dl
+          mkdir '${{ github.event.inputs.name }}'
+          you-get '${{ github.event.inputs.url }}' -o './${{ github.event.inputs.name }}'
       - name: Upload
         run: |
-          ./uploader -s ./dl -t 10 -r offline
+          ./uploader -s './${{ github.event.inputs.name }}' -t 10 -r offline
