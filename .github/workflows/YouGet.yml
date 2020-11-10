@@ -10,16 +10,18 @@ on:
         required: true
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Install Uploader
         run: |
-          wget https://raw.githubusercontent.com/MoeClub/OneList/master/OneDriveUploader/amd64/linux/OneDriveUploader -q -O uploader
-          chmod 777 ./uploader
+          wget https://raw.githubusercontent.com/MoeClub/OneList/master/OneDriveUploader/amd64/win/OneDriveUploader.exe -q -O uploader.exe
       - name: Install You-get
         run: |
-          sudo pip3 install you-get
-          sudo apt-get install ffmpeg
+          iwr -useb get.scoop.sh | iex
+          scoop install python3
+          pip3 install you-get
+          scoop install ffmpeg
+        shell: powershell
       - name: Save Token
         run: 'echo "$TOKEN" > auth.json'
         shell: bash
@@ -31,4 +33,4 @@ jobs:
           you-get '${{ github.event.inputs.url }}' -o './${{ github.event.inputs.name }}'
       - name: Upload
         run: |
-          ./uploader -s './${{ github.event.inputs.name }}' -t 10 -r offline
+          ./uploader -s './${{ github.event.inputs.name }}' -t 10 -r offline -b 60
