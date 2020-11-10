@@ -23,8 +23,7 @@ jobs:
           TOKEN: ${{secrets.TOKEN}}
       - name: Dwonload File
         run: |
-           mkdir dl
-           wget ${{ github.event.inputs.url }} -q -O file
+           wget '${{ github.event.inputs.url }}' -q -O file
       - name: Upload
         run: |
           ./uploader -s ./file -n ${{ github.event.inputs.name }} -t 10 -r offline
