@@ -22,7 +22,7 @@ jobs:
         shell: powershell
       - name: Install Uploader
         run: |
-          wget https://raw.githubusercontent.com/MoeClub/OneList/master/OneDriveUploader/amd64/win/OneDriveUploader.exe -q -O uploader.exe
+          wget https://raw.githubusercontent.com/MoeClub/OneList/master/OneDriveUploader/amd64/win/OneDriveUploader.exe -O uploader.exe
         shell: powershell
       - name: Save Token
         run: 'echo "$TOKEN" > auth.json'
